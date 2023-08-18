@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Django!!{% endblock%}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Django</a>
+          
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active"  href="#">Home</a>
+              <a class="nav-link" href="/create_post">Post</a>
+              <a class="nav-link" href="#">Pricing</a>
+              
+            </div>
+            
+          </div>
+          {% if user.is_authenticated %}
+          
+            <div class ="navbar-nav">
+              
+              <a class="nav-link navbar-text" href="#">Logged in as {{ user.username }}</a>
+              <a class="nav-link" href="/logout">Logout</a>
+              
+            </div>
+        
+        {% else %}
+        <div class ="navbar-nav">
+          <a class="nav-link" href="/login">Login</a>
+      </div>
+      {% endif %}
+        </div>
+      </nav>
+
+    <div class="container">
+        {% block content %}
+    
+        {% endblock %}
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html> 
